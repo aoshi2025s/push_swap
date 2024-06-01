@@ -6,7 +6,7 @@
 #    By: yoaoki <yoaoki@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/01 19:52:16 by yoaoki            #+#    #+#              #
-#    Updated: 2024/06/01 19:52:18 by yoaoki           ###   ########.fr        #
+#    Updated: 2024/06/02 05:59:24 by yoaoki           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,8 @@ AR = ar rcs
 
 $(NAME): $(LIBFT) $(OBJS)
 	@make -C $(LIBFT_PATH) all
-	cp $(LIBFT_PATH)/$(LIBFT_NAME) src/$(LIBFT_NAME)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	cp $(LIBFT_PATH)/$(LIBFT_NAME) $(LIBFT_NAME)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT_NAME)
 
 
 all: ${NAME}
@@ -44,7 +44,7 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 	$(RM) $(LIBFT_PATH)/$(LIBFT_NAME)
-	$(RM) src/$(LIBFT_NAME)
+	$(RM) $(LIBFT_NAME)
 
 re: fclean all
 

@@ -10,10 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h> //for <atoi> ***need change function atoi to ft_atoi in libft***
-
 #include <limits.h>
-#include <ctype.h> //for <isspace, isdigit> ***need change function isspace to ft_isspace in libft***
+#include "libft.h"
 
 int is_integer(char *str);
 int is_exist_num(int num, int *numbers, int end);
@@ -30,7 +28,7 @@ int	*input_to_stack(int size, char **strings)
 	{
 		if(is_integer(strings[i + 1]))
 		{
-			int n = atoi(strings[i + 1]);
+			int n = ft_atoi(strings[i + 1]);
 			if (is_exist_num(n, numbers, i))
 				return (NULL);
 			numbers[i] = n;
@@ -51,7 +49,7 @@ int is_integer(char *str)
 	sign = 1;
 	if (!str)
 		return (0);
-	while (isspace(*str))
+	while (ft_isspace(*str))
 		str++;
 	if ('+' == *str || '-' == *str)
 	{
@@ -62,7 +60,7 @@ int is_integer(char *str)
 		return (0);
 	while (*str)
 	{
-		if (0 == isdigit(*str))
+		if (0 == ft_isdigit(*str))
 			return (0);
 		num = num * 10 + (*str - '0');
 		if (num * sign > INT_MAX || num * sign < INT_MIN)

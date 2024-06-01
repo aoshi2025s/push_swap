@@ -14,24 +14,26 @@
 #include <stdlib.h>
 #include <limits.h>
 
+#include "ft_printf.h"
+
 int *input_to_stack(int size, char **strings);
 
 int main(int argc, char **argv)
 {
     if (argc <= 1)
     {
-        printf("please input value\n");
+        ft_printf("please input value\n");
         return (0);
     }
     int *numlist = input_to_stack(argc - 1, argv);
     if (!numlist)
     {
-        printf("null\n");
+        ft_printf("Error\n");
         return (0);
     }
     for (int i = 0; i < argc - 1; i++)
     {
-        printf("%d: %d\n", i, numlist[i]);
+        ft_printf("%d: %d\n", i, numlist[i]);
     }
     free(numlist);
     return (0);

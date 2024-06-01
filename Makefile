@@ -27,12 +27,13 @@ RM = rm -f
 AR = ar rcs
 
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I $(INCLUDES)
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I $(INCLUDES) -I $(LIBFT_PATH)/$(INCLUDES)
 
 $(NAME): $(LIBFT) $(OBJS)
 	@make -C $(LIBFT_PATH) all
-	cp $(LIBFT_PATH)/$(LIBFT_NAME) $(NAME)
-	$(AR) $(NAME) $(OBJS)
+	cp $(LIBFT_PATH)/$(LIBFT_NAME) src/$(LIBFT_NAME)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+
 
 all: ${NAME}
 
@@ -43,6 +44,7 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 	$(RM) $(LIBFT_PATH)/$(LIBFT_NAME)
+	$(RM) src/$(LIBFT_NAME)
 
 re: fclean all
 

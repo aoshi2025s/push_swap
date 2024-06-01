@@ -26,6 +26,7 @@
 // argc - １って書きたくないので、ゆくゆくはsizeとして与えたい
 
 int is_integer(char *str);
+int is_exist(int num, int *numbers, int end);
 
 int	*input_to(int argc, char **argv)
 {
@@ -40,6 +41,8 @@ int	*input_to(int argc, char **argv)
 		if(is_integer(argv[i]))
 		{
 			int n = atoi(argv[i]);
+			if (is_exist(n, numbers, i - 1))
+				return (NULL);
 			numbers[i - 1] = n;
 		}
 		else
@@ -78,9 +81,18 @@ int is_integer(char *str)
 	}
 	return (1);
 }
-/*
-int is_exist(int num)
-{
 
+int is_exist(int num, int *numbers, int end)
+{
+	int start;
+
+	start = 0;
+	while (start < end)
+	{
+		if (numbers[start] == num)
+			return (1);
+		start++;
+	}
+	return (0);
 }
-*/
+

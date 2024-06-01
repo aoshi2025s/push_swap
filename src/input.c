@@ -14,36 +14,26 @@
 
 #include <limits.h>
 #include <ctype.h> //for <isspace, isdigit> ***need change function isspace to ft_isspace in libft***
-/*
- * argc, argvを受け取る
- * 1. argvが数値かどうか
- * 2. 数値に変換した際にintの範囲を超えてないか
- * 3. 数値の重複がないか 2重ループでチェック
- *
- *
-*/
-// inputしていきたい。to_stackとしたいけど、一旦配列か何かに納めてprintf出力して目に見える形に。
-// argc - １って書きたくないので、ゆくゆくはsizeとして与えたい
 
 int is_integer(char *str);
-int is_exist(int num, int *numbers, int end);
+int is_exist_num(int num, int *numbers, int end);
 
-int	*input_to(int argc, char **argv)
+int	*input_to_stack(int size, char **strings)
 {
 	int *numbers;
 
-	numbers = (int *)malloc(sizeof(int) * (argc - 1));
+	numbers = (int *)malloc(sizeof(int) * (size));
 	if (NULL == numbers)
 		return (NULL);
-	int i = 1;
-	while (i < argc)
+	int i = 0;
+	while (i < size)
 	{
-		if(is_integer(argv[i]))
+		if(is_integer(strings[i + 1]))
 		{
-			int n = atoi(argv[i]);
-			if (is_exist(n, numbers, i - 1))
+			int n = atoi(strings[i + 1]);
+			if (is_exist_num(n, numbers, i))
 				return (NULL);
-			numbers[i - 1] = n;
+			numbers[i] = n;
 		}
 		else
 			return (NULL);
@@ -51,7 +41,7 @@ int	*input_to(int argc, char **argv)
 	}
 	return (numbers);
 }
-
+// maybe static add
 int is_integer(char *str)
 {
 	int sign;
@@ -82,7 +72,8 @@ int is_integer(char *str)
 	return (1);
 }
 
-int is_exist(int num, int *numbers, int end)
+// maybe static add
+int is_exist_num(int num, int *numbers, int end)
 {
 	int start;
 
@@ -95,4 +86,3 @@ int is_exist(int num, int *numbers, int end)
 	}
 	return (0);
 }
-

@@ -10,7 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = src/push_swap.c
+SRCS = src/push_swap.c\
+	src/input.c
 
 OBJS = $(SRCS:.c=.o)
 

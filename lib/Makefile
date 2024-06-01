@@ -57,7 +57,7 @@ $(OBJ_DIR)%.o : $(SRC_DIR)%.c
 			$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
-			$(RM)  $(OBJ_DIR)/$(OBJ)
+			$(RM)  $(OBJ)
 
 fclean:		clean
 			$(RM) $(NAME)

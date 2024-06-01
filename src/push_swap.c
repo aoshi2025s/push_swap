@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <limits.h>
 
-int *input_to(int argc, char **argv);
+int *input_to_stack(int size, char **strings);
 
 int main(int argc, char **argv)
 {
@@ -23,7 +23,7 @@ int main(int argc, char **argv)
         printf("please input value\n");
         return (0);
     }
-    int *numlist = input_to(argc, argv);
+    int *numlist = input_to_stack(argc - 1, argv);
     if (!numlist)
     {
         printf("null\n");

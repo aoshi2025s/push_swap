@@ -12,32 +12,24 @@
 
 #include <limits.h>
 #include "libft.h"
+#include "push_swap.h"
+#include "ft_printf.h"
 
-int is_integer(char *str);
-int is_exist_num(int num, int *numbers, int end);
-
-int	*input_to_stack(int size, char **strings)
+int	input_to_stack(int size, char **strings, t_stack *st)
 {
-	int *numbers;
-
-	numbers = (int *)malloc(sizeof(int) * (size));
-	if (NULL == numbers)
-		return (NULL);
 	int i = 0;
 	while (i < size)
 	{
 		if(is_integer(strings[i + 1]))
 		{
 			int n = ft_atoi(strings[i + 1]);
-			if (is_exist_num(n, numbers, i))
-				return (NULL);
-			numbers[i] = n;
+			push_back(st, n);
 		}
 		else
-			return (NULL);
+			return (0);
 		i++;
 	}
-	return (numbers);
+	return (is_duplicate(st) == 0);
 }
 // maybe static add
 int is_integer(char *str)
@@ -70,17 +62,21 @@ int is_integer(char *str)
 	return (1);
 }
 
-// maybe static add
-int is_exist_num(int num, int *numbers, int end)
-{
-	int start;
+int is_duplicate(t_stack *st) {
+	int i;
+	int j;
 
-	start = 0;
-	while (start < end)
-	{
-		if (numbers[start] == num)
-			return (1);
-		start++;
+	i = 0;
+	while (i < st->size - 1) {
+		j = i + 1;
+		while (j < st->size) {
+			if (st->data[i] == st->data[j]) {
+				ft_printf("st->data[%d] == st->data[%d]\n", i, j);
+				return (1);
+			}
+			j++;
+		}
+		i++;
 	}
 	return (0);
 }

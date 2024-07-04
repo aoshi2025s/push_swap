@@ -17,8 +17,6 @@
 #include "ft_printf.h"
 #include "push_swap.h"
 
-int *input_to_stack(int size, char **strings);
-
 int main(int argc, char **argv)
 {
     if (argc <= 1)
@@ -26,28 +24,24 @@ int main(int argc, char **argv)
         ft_printf("please input value\n");
         return (0);
     }
-    /*
-    int *numlist = input_to_stack(argc - 1, argv);
-    if (!numlist)
-    {
-        ft_printf("Error\n");
-        return (0);
-    }
-    for (int i = 0; i < argc - 1; i++)
-    {
-        ft_printf("%d: %d\n", i, numlist[i]);
-    }
-    */
 
-    t_stack *st = create_new_stack(argc - 1);
+    int size = argc;
+
+    t_stack *st = create_new_stack(size);
+    ft_printf("stack->size: %d\n", st->size);
     if (st) {
         ft_printf("stack created ok\n");
     }
-    for (int i = 1; i < argc; i++) {
-        int value = atoi(argv[i]);
-        push_back(st, value);
+
+    if (input_to_stack(size - 1, argv, st) == 0) {
+        st_delete_all(st);
+        ft_printf("Error\n");
+        return (0);
     }
+
+    ft_printf("stack input ok\n");
     st_display_all(st);
     st_delete_all(st);
+
     return (0);
 }

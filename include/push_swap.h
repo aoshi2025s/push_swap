@@ -32,8 +32,8 @@ typedef struct s_stack {
 
 // input
 int is_integer(char *str); // maybe static and delete from here
-int is_exist_num(int num, int *numbers, int end); // maybe static and delet from here
-int *input_to_stack(int size, char **strings);
+int input_to_stack(int size, char **strings, t_stack *st);
+int is_duplicate(t_stack *st);
 
 // stack manipulate functions
 t_stack *create_new_stack(int size);

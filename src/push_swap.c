@@ -15,6 +15,7 @@
 #include <limits.h>
 
 #include "ft_printf.h"
+#include "push_swap.h"
 
 int *input_to_stack(int size, char **strings);
 
@@ -25,6 +26,7 @@ int main(int argc, char **argv)
         ft_printf("please input value\n");
         return (0);
     }
+    /*
     int *numlist = input_to_stack(argc - 1, argv);
     if (!numlist)
     {
@@ -35,6 +37,17 @@ int main(int argc, char **argv)
     {
         ft_printf("%d: %d\n", i, numlist[i]);
     }
-    free(numlist);
+    */
+
+    t_stack *st = create_new_stack(argc - 1);
+    if (st) {
+        ft_printf("stack created ok\n");
+    }
+    for (int i = 1; i < argc; i++) {
+        int value = atoi(argv[i]);
+        push_back(st, value);
+    }
+    st_display_all(st);
+    st_delete_all(st);
     return (0);
 }

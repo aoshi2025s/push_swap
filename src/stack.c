@@ -14,13 +14,6 @@
 #include <stdlib.h>
 #include "push_swap.h"
 
-// typedef struct s_stack {
-//     size_t head;
-//     size_t tail;
-//     int *data;
-//     size_t size;
-// } t_stack;
-
 t_stack *create_new_stack(int size) {
     t_stack *st = (t_stack *)malloc(sizeof(t_stack));
     if (st == NULL)
@@ -28,6 +21,7 @@ t_stack *create_new_stack(int size) {
     st->data = (int *)malloc(sizeof(int) * size);
     st->head = 0;
     st->tail = 0;
+    st->size = size;
     return (st);
 }
 

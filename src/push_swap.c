@@ -1,47 +1,49 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yoaoki <yoaoki@student.42tokyo.jp>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/01 19:52:30 by yoaoki            #+#    #+#             */
-/*   Updated: 2024/06/02 03:59:11 by yoaoki           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <limits.h>
-
-#include "ft_printf.h"
 #include "push_swap.h"
+
+void display_stacks(t_stacks *stack)
+{
+	printf("===========stack_a===========\n");
+	for (int i = 0; i < stack->size_a - 1; i++) {
+		printf("%d ", stack->a[i]);
+	}
+	printf("%d\n", stack->a[stack->size_a - 1]);
+
+	printf("===========stack_b===========\n");
+	for (int i = 0; i < stack->size_b - 1; i++) {
+		printf("%d ", stack->b[i]);
+	}
+	printf("%d\n", stack->b[stack->size_b - 1]);
+}
 
 int main(int argc, char **argv)
 {
-    if (argc <= 1)
-    {
-        ft_printf("please input value\n");
-        return (0);
-    }
+	if (argc < 2)
+	{
+		printf("please input value\n");
+		return (1);
+	}
+	if (argc == 2)
+	{
+		// ft_split(argv[2]);
+		return (0);
+	}
+	t_stacks *stack;
 
-    int size = argc;
+	stack = malloc(sizeof(t_stacks));
+	if (!stack)
+		return (1);
+	init_stacks(stack, argc-1);
+	input_to_stack_a(stack, argv);
+	
+	ft_pb(stack);
+	ft_pb(stack);
+	ft_pb(stack);
+	display_stacks(stack);
 
-    t_stack *st = create_new_stack(size);
-    ft_printf("stack->size: %d\n", st->size);
-    if (st) {
-        ft_printf("stack created ok\n");
-    }
+	ft_rr(stack);
+	display_stacks(stack);
 
-    if (input_to_stack(size - 1, argv, st) == 0) {
-        st_delete_all(st);
-        ft_printf("Error\n");
-        return (0);
-    }
-
-    ft_printf("stack input ok\n");
-    st_display_all(st);
-    st_delete_all(st);
-
-    return (0);
+	free(stack->a);
+	free(stack->b);
+	free(stack);
 }

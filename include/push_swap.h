@@ -5,44 +5,44 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoaoki <yoaoki@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/01 19:53:42 by yoaoki            #+#    #+#             */
-/*   Updated: 2024/06/01 19:54:02 by yoaoki           ###   ########.fr       */
+/*   Created: 2024/08/12 13:23:32 by yoaoki            #+#    #+#             */
+/*   Updated: 2024/08/12 13:41:58 by yoaoki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+#include <stdio.h>
 #include <stdlib.h>
-#include <limits.h>
-#include <stdbool.h>
 
-// typedef struct
-// {
-//     int *data; // data = malloc(sizeof(int) * size); size = argc - 1
-//     int top;
-// } t_stack;
+typedef struct s_stacks {
+	int *a;
+	int *b;
+	int size_a;
+	int size_b;
+} t_stacks;
 
-typedef struct s_stack {
-    size_t head;
-    size_t tail;
-    int *data;
-    size_t size;
-} t_stack;
+// for stack_utils
+void init_stacks(t_stacks *stack, size_t size);
+void input_to_stack_a(t_stacks *stack, char **strings);
 
-// input
-int is_integer(char *str); // maybe static and delete from here
-int input_to_stack(int size, char **strings, t_stack *st);
-int is_duplicate(t_stack *st);
+void display_stacks(t_stacks *stack);
 
-// stack manipulate functions
-t_stack *create_new_stack(int size);
-int st_is_empty(t_stack *st);
-int st_is_full(t_stack *st);
-void push_back(t_stack *st, int value);
-int top(t_stack *st);
-void pop(t_stack *st);
-void st_delete_all(t_stack *st);
-void st_display_all(t_stack *st);
+// for stack manipulate
+void ft_sa(t_stacks *stack);
+void ft_sb(t_stacks *stack);
+void ft_ss(t_stacks *stack);
+
+void ft_pb(t_stacks *stack);
+void ft_pa(t_stacks *stack);
+
+void ft_ra(t_stacks *stack);
+void ft_rb(t_stacks *stack);
+void ft_rr(t_stacks *stack);
+
+void ft_rra(t_stacks *stack);
+void ft_rrb(t_stacks *stack);
+void ft_rrr(t_stacks *stack);
 
 #endif

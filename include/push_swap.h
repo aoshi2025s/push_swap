@@ -6,7 +6,7 @@
 /*   By: yoaoki <yoaoki@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 13:23:32 by yoaoki            #+#    #+#             */
-/*   Updated: 2024/08/12 13:41:58 by yoaoki           ###   ########.fr       */
+/*   Updated: 2024/08/12 15:40:24 by yoaoki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef struct s_stacks {
 	int *a;
@@ -23,10 +24,14 @@ typedef struct s_stacks {
 	int size_b;
 } t_stacks;
 
+bool is_numeral(char *str);
+bool is_duplicate(t_stacks *stack);
+
+/* src/stack directory */
+
 // for stack_utils
 void init_stacks(t_stacks *stack, size_t size);
 void input_to_stack_a(t_stacks *stack, char **strings);
-
 void display_stacks(t_stacks *stack);
 
 // for stack manipulate

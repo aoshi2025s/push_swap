@@ -6,7 +6,7 @@
 /*   By: yoaoki <yoaoki@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 13:29:05 by yoaoki            #+#    #+#             */
-/*   Updated: 2024/08/12 13:32:33 by yoaoki           ###   ########.fr       */
+/*   Updated: 2024/08/12 15:45:44 by yoaoki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,18 @@ void input_to_stack_a(t_stacks *stack, char **strings)
 	i = 0;
 	while (i < stack->size_a)
 	{
-		// TODO: check atoi handle
+		// TODO: error handle
+		if (!is_numeral(strings[i + 1]))
+		{
+			printf("error\n");
+			return ;
+		}
 		stack->a[i] = atoi(strings[i + 1]);
 		i++;
 	}
-	// TODO: check duplicate
+	if (is_duplicate(stack))
+	{
+		printf("error\n");
+		return ;
+	}
 }

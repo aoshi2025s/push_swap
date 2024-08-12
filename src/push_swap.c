@@ -35,12 +35,18 @@ int main(int argc, char **argv)
 	init_stacks(stack, argc-1);
 	input_to_stack_a(stack, argv);
 	
+	ft_rra(stack);	
+	display_stacks(stack);
+
+	ft_ra(stack);
+	display_stacks(stack);
+
 	ft_pb(stack);
 	ft_pb(stack);
 	ft_pb(stack);
 	display_stacks(stack);
 
-	ft_rr(stack);
+	ft_rrb(stack);
 	display_stacks(stack);
 
 	free(stack->a);

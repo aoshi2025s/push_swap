@@ -6,11 +6,12 @@
 /*   By: yoaoki <yoaoki@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 14:15:04 by yoaoki            #+#    #+#             */
-/*   Updated: 2024/08/13 13:37:14 by yoaoki           ###   ########.fr       */
+/*   Updated: 2024/08/13 14:25:15 by yoaoki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf.h"
 
 void	ft_ra(t_stacks *stack)
 {
@@ -19,7 +20,7 @@ void	ft_ra(t_stacks *stack)
 
 	if (stack->size_a < 2)
 	{
-		printf("ra command error\n");
+		ft_printf("ra command error\n");
 		return ;
 	}
 	top_data = stack->a[0];
@@ -30,7 +31,7 @@ void	ft_ra(t_stacks *stack)
 		i++;
 	}
 	stack->a[stack->size_a - 1] = top_data;
-	printf("ra\n");
+	ft_printf("ra\n");
 }
 
 void	ft_rb(t_stacks *stack)
@@ -40,7 +41,7 @@ void	ft_rb(t_stacks *stack)
 
 	if (stack->size_b < 2)
 	{
-		printf("rb command error\n");
+		ft_printf("rb command error\n");
 		return ;
 	}
 	top_data = stack->b[0];
@@ -51,7 +52,7 @@ void	ft_rb(t_stacks *stack)
 		i++;
 	}
 	stack->b[stack->size_b - 1] = top_data;
-	printf("rb\n");
+	ft_printf("rb\n");
 }
 
 void	ft_rr(t_stacks *stack)

@@ -6,11 +6,12 @@
 /*   By: yoaoki <yoaoki@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 13:56:26 by yoaoki            #+#    #+#             */
-/*   Updated: 2024/08/13 13:28:05 by yoaoki           ###   ########.fr       */
+/*   Updated: 2024/08/13 14:23:51 by yoaoki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf.h"
 
 void	ft_pb(t_stacks *stack)
 {
@@ -18,7 +19,7 @@ void	ft_pb(t_stacks *stack)
 
 	if (stack->size_a == 0)
 	{
-		printf("pb command error\n");
+		ft_printf("pb command error\n");
 		return ;
 	}
 	stack->size_b++;
@@ -36,7 +37,7 @@ void	ft_pb(t_stacks *stack)
 		stack->a[i] = stack->a[i + 1];
 		i++;
 	}
-	printf("pb\n");
+	ft_printf("pb\n");
 }
 
 void	ft_pa(t_stacks *stack)
@@ -45,7 +46,7 @@ void	ft_pa(t_stacks *stack)
 
 	if (stack->size_b == 0)
 	{
-		printf("pa command error\n");
+		ft_printf("pa command error\n");
 		return ;
 	}
 	stack->size_a++;
@@ -63,5 +64,5 @@ void	ft_pa(t_stacks *stack)
 		stack->b[i] = stack->b[i + 1];
 		i++;
 	}
-	printf("pa\n");
+	ft_printf("pa\n");
 }

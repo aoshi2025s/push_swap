@@ -6,7 +6,7 @@
 #    By: yoaoki <yoaoki@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/12 13:33:04 by yoaoki            #+#    #+#              #
-#    Updated: 2024/08/12 15:45:02 by yoaoki           ###   ########.fr        #
+#    Updated: 2024/08/13 14:21:20 by yoaoki           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,24 +22,34 @@ OBJS = $(SRCS:.c=.o)
 
 NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
-RM = rm -f
 INCLUDE = include
+LIBFT = libft
+LIBFT_NAME = libft.a
+CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE) -I $(LIBFT)/$(INCLUDE)
+RM = rm -f
 # AR = ar rcs
 
+start:
+	@make -C $(LIBFT)
+	@cp $(LIBFT)/$(LIBFT_NAME) .
+	@make all
+
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I $(INCLUDE)
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) $(LIBFT_NAME) -o $(NAME) $(OBJS)
 
 all: ${NAME}
 
 clean:
 	$(RM) $(OBJS)
+	make clean -C $(LIBFT)
 
 fclean: clean
 	$(RM) $(NAME)
+	$(RM) $(LIBFT)/$(LIBFT_NAME)
+	$(RM) $(LIBFT_NAME)
 
 re: fclean all
 

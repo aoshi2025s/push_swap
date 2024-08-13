@@ -6,25 +6,23 @@
 /*   By: yoaoki <yoaoki@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 13:56:26 by yoaoki            #+#    #+#             */
-/*   Updated: 2024/08/12 14:14:42 by yoaoki           ###   ########.fr       */
+/*   Updated: 2024/08/13 13:28:05 by yoaoki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ft_pb(t_stacks *stack)
+void	ft_pb(t_stacks *stack)
 {
-	int i;
+	int	i;
 
 	if (stack->size_a == 0)
 	{
-		// TODO: error
-		printf("error\n");
+		printf("pb command error\n");
 		return ;
 	}
 	stack->size_b++;
 	stack->size_a--;
-	// stack->bの要素を全部右に移動
 	i = stack->size_b - 1;
 	while (i > 0)
 	{
@@ -32,7 +30,6 @@ void ft_pb(t_stacks *stack)
 		i--;
 	}
 	stack->b[0] = stack->a[0];
-	// stack->aの要素を全部左に移動
 	i = 0;
 	while (i < stack->size_a)
 	{
@@ -41,20 +38,18 @@ void ft_pb(t_stacks *stack)
 	}
 	printf("pb\n");
 }
-	
-void ft_pa(t_stacks *stack)
+
+void	ft_pa(t_stacks *stack)
 {
-	int i;
+	int	i;
 
 	if (stack->size_b == 0)
 	{
-		// TODO: error
-		printf("error\n");
+		printf("pa command error\n");
 		return ;
 	}
 	stack->size_a++;
 	stack->size_b--;
-	// stack->aの要素を全部右に移動
 	i = stack->size_a - 1;
 	while (i > 0)
 	{
@@ -62,7 +57,6 @@ void ft_pa(t_stacks *stack)
 		i--;
 	}
 	stack->a[0] = stack->b[0];
-	// stack->bの要素を全部左に移動
 	i = 0;
 	while (i < stack->size_b)
 	{

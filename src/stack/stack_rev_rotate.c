@@ -6,25 +6,23 @@
 /*   By: yoaoki <yoaoki@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 15:21:24 by yoaoki            #+#    #+#             */
-/*   Updated: 2024/08/12 15:31:40 by yoaoki           ###   ########.fr       */
+/*   Updated: 2024/08/13 13:28:33 by yoaoki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ft_rra(t_stacks *stack)
+void	ft_rra(t_stacks *stack)
 {
-	int bottom_data;
-	int i;
+	int	bottom_data;
+	int	i;
 
 	if (stack->size_a < 2)
 	{
-		// TODO: error handle
-		printf("error\n");
+		printf("rra command error\n");
 		return ;
 	}
 	bottom_data = stack->a[stack->size_a - 1];
-	// 全部右にずらす
 	i = stack->size_a - 1;
 	while (i > 0)
 	{
@@ -35,19 +33,17 @@ void ft_rra(t_stacks *stack)
 	printf("rra\n");
 }
 
-void ft_rrb(t_stacks *stack)
+void	ft_rrb(t_stacks *stack)
 {
-	int bottom_data;
-	int i;
-	
+	int	bottom_data;
+	int	i;
+
 	if (stack->size_b < 2)
 	{
-		// TODO: error handle
-		printf("error\n");
+		printf("rrb command error\n");
 		return ;
 	}
 	bottom_data = stack->b[stack->size_b - 1];
-	// 全部右にずらす
 	i = stack->size_b - 1;
 	while (i > 0)
 	{
@@ -58,7 +54,7 @@ void ft_rrb(t_stacks *stack)
 	printf("rrb\n");
 }
 
-void ft_rrr(t_stacks *stack)
+void	ft_rrr(t_stacks *stack)
 {
 	ft_rra(stack);
 	ft_rrb(stack);
